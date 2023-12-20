@@ -6,7 +6,7 @@ export interface Command {
   title: string
   icon?: string
   shortcut?: string[]
-  section: string
+  section?: string
   command?: () => void
 }
 
@@ -40,6 +40,15 @@ export function useSortedActions(commands: Ref<Command[]>) {
     const sections: Record<string, Command[]> = {}
 
     commands.value.forEach((item) => {
+      if (!item.section) {
+        if (sections.Uncategorized) {
+          sections.Uncategorized.push(item)
+        } else {
+          sections.Uncategorized = [item]
+        }
+        return
+      }
+
       if (sections[item.section])
         sections[item.section].push(item)
       else
