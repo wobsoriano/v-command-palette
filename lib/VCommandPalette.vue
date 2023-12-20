@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import { useMagicKeys } from '@vueuse/core'
 import {
   VCard,
   VCode,
@@ -12,8 +13,9 @@ import {
   VTextField,
 } from 'vuetify/components'
 import { useSortedActions, useSearch, type Command } from './useSearch'
+import { useHotkeys } from './useHotkeys'
 
-const dialog = ref(true)
+const dialog = ref(false)
 const search = ref('')
 
 const props = defineProps<{
@@ -22,6 +24,14 @@ const props = defineProps<{
 
 const matches = useSearch(search, props.commands)
 const sortedCommands = useSortedActions(matches)
+
+const keys = useMagicKeys()
+watch([keys['Cmd+K'], keys['Ctrl+K']], ([cmd, ctrl]) => {
+  if (cmd || ctrl)
+    dialog.value = !dialog.value
+})
+
+useHotkeys(props.commands)
 
 const activeIndex = ref(0)
 
