@@ -80,7 +80,7 @@ watch(dialog, (value) => {
 
 const selected = computed(() => [activeId.value])
 
-const inputRef = ref()
+const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
 </script>
 
 <template>
