@@ -1,5 +1,5 @@
 import Fuse from 'fuse.js'
-import { Ref, computed, onMounted, ref, watch } from 'vue'
+import { ComputedRef, Ref, computed, onMounted, ref, watch } from 'vue'
 
 export interface Command {
   id?: string
@@ -14,17 +14,17 @@ export function createCommand(action: Command) {
   return action
 }
 
-export function useSearch(search: Ref<string>, list: Command[]) {
-  const result = ref<Command[]>(list)
+export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>) {
+  const result = ref<Command[]>(list.value)
 
   onMounted(() => {
-    const fuse = new Fuse<Command>(list, {
+    const fuse = new Fuse<Command>(list.value, {
       keys: ['title']
     })
 
     watch(search, (pattern) => {
       if (!pattern) {
-        result.value = list
+        result.value = list.value
         return
       }
 

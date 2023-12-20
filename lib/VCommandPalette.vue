@@ -14,6 +14,7 @@ import {
 } from 'vuetify/components'
 import { useSortedActions, useSearch, type Command } from './useSearch'
 import { useHotkeys } from './useHotkeys'
+import { nanoid } from 'nanoid'
 
 const dialog = ref(false)
 const search = ref('')
@@ -22,7 +23,13 @@ const props = defineProps<{
   commands: Command[]
 }>()
 
-const matches = useSearch(search, props.commands)
+const commands = computed(() => props.commands.map((command) => {
+  return {
+    ...command,
+    id: command.id || nanoid(5)
+  }
+}))
+const matches = useSearch(search, commands)
 const sortedCommands = useSortedActions(matches)
 
 const keys = useMagicKeys()

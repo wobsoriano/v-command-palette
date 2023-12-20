@@ -23,7 +23,7 @@ const actions = [
     shortcut: ['b', 'd'],
   }),
   createCommand({
-    id: 'readne',
+    id: 'readme',
     title: 'ReadNe',
     icon: 'mdi-book',
     perform() {
@@ -33,7 +33,6 @@ const actions = [
     shortcut: ['h', 'i'],
   }),
   createCommand({
-    id: 'hoe',
     title: 'Hoe',
     icon: 'mdi-book',
     perform() {
