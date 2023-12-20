@@ -15,10 +15,10 @@ npm install v-command-palette
 Import the component at the root of your app
 
 ```vue
-<script setup lang="ts">
+<script setup>
 import { VCommandPalette, createCommand } from 'v-command-palette'
 
-const actions = [
+const commands = [
   createCommand({
     title: 'Home',
     icon: 'mdi-home',
@@ -39,7 +39,7 @@ const actions = [
 <template>
   <VApp>
     <VMain>
-      <VCommandPalette :commands="actions" />
+      <VCommandPalette :commands="commands" />
     </VMain>
   </VApp>
 </template>

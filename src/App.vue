@@ -4,7 +4,7 @@ import { useTheme } from 'vuetify';
 
 const theme = useTheme()
 
-const actions = [
+const commands = [
   createCommand({
     id: 'home',
     title: 'Home',
@@ -56,7 +56,7 @@ const actions = [
 <template>
   <v-app>
     <v-main>
-      <VCommandPalette :commands="actions" />
+      <VCommandPalette :commands="commands" />
     </v-main>
   </v-app>
 </template>
