@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js'
-import { ComputedRef, Ref, computed, onMounted, ref, watch } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 export interface Command {
   id?: string
@@ -19,7 +20,7 @@ export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>) {
 
   onMounted(() => {
     const fuse = new Fuse<Command>(list.value, {
-      keys: ['title']
+      keys: ['title'],
     })
 
     watch(search, (pattern) => {
@@ -28,7 +29,7 @@ export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>) {
         return
       }
 
-      result.value = fuse.search(pattern).map((i) => i.item)
+      result.value = fuse.search(pattern).map(i => i.item)
     }, { immediate: false })
   })
 
@@ -41,11 +42,11 @@ export function useSortedActions(commands: Ref<Command[]>) {
 
     commands.value.forEach((item) => {
       if (!item.section) {
-        if (sections.Uncategorized) {
+        if (sections.Uncategorized)
           sections.Uncategorized.push(item)
-        } else {
+        else
           sections.Uncategorized = [item]
-        }
+
         return
       }
 

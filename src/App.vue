@@ -19,7 +19,7 @@ const actions = [
     command() {
       console.log(123)
     },
-    // section: 'Basics',
+    section: 'Basics',
     shortcut: ['b', 'd'],
   }),
   createCommand({

@@ -12,24 +12,23 @@ import {
   VListSubheader,
   VTextField,
 } from 'vuetify/components'
-import { useSortedActions, useSearch, type Command } from './useSearch'
-import { useHotkeys } from './useHotkeys'
 import { nanoid } from 'nanoid'
-
-const dialog = ref(false)
-const search = ref('')
+import { type Command, useSearch, useSortedActions } from './useSearch'
+import { useHotkeys } from './useHotkeys'
 
 const props = withDefaults(defineProps<{
-  commands: Command[],
+  commands: Command[]
   noResultText?: string
 }>(), {
-  noResultText: 'No results found.'
+  noResultText: 'No results found.',
 })
+const dialog = ref(false)
+const search = ref('')
 
 const commands = computed(() => props.commands.map((command) => {
   return {
     ...command,
-    id: command.id || nanoid(5)
+    id: command.id || nanoid(5),
   }
 }))
 const matches = useSearch(search, commands)
@@ -48,25 +47,25 @@ const activeIndex = ref(0)
 const activeId = computed(() => matches.value[activeIndex.value]?.id ?? '')
 
 function moveToItem(e: KeyboardEvent) {
-  const numberOfItems = matches.value.length;
+  const numberOfItems = matches.value.length
 
   if (e.key === 'ArrowDown') {
     if (activeIndex.value < numberOfItems - 1) {
-      e.preventDefault();
-      activeIndex.value++;
+      e.preventDefault()
+      activeIndex.value++
     }
   }
 
   if (e.key === 'ArrowUp') {
     if (activeIndex.value > 0) {
-      e.preventDefault();
-      activeIndex.value--;
+      e.preventDefault()
+      activeIndex.value--
     }
   }
 
   if (e.key === 'Enter' && activeIndex.value >= 0) {
-    e.preventDefault();
-    matches.value[activeIndex.value].command?.();
+    e.preventDefault()
+    matches.value[activeIndex.value].command?.()
   }
 }
 
@@ -90,7 +89,7 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
   <VDialog v-model="dialog" max-width="600px" content-class="v-command-palette">
     <VCard max-height="450px">
       <VListItem class="px-0">
-        <VTextField 
+        <VTextField
           ref="inputRef"
           v-model="search"
           role="combobox"
@@ -104,14 +103,14 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
       </VListItem>
       <VDivider />
       <VList slim mandatory :selected="selected" tabindex="-1">
-        <VListItem v-if="matches.length == 0 && search.length > 0">
+        <VListItem v-if="matches.length === 0 && search.length > 0">
           {{ noResultText }}
         </VListItem>
-        <template v-else v-for="(value, section) in sortedCommands" :key="section">
+        <template v-for="(value, section) in sortedCommands" v-else :key="section">
           <VListSubheader role="option">
             {{ section }}
           </VListSubheader>
-          <VListItem :ripple="false" :value="item.id" v-for="item in value" :key="item.id" role="option" :title="item.title" @click="() => { inputRef?.focus(); item.command?.(); }">
+          <VListItem v-for="item in value" :key="item.id" :ripple="false" :value="item.id" role="option" :title="item.title" @click="() => { inputRef?.focus(); item.command?.(); }">
             <template v-if="item.icon" #prepend>
               <VIcon>
                 {{ item.icon }}
