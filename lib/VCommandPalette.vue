@@ -19,9 +19,12 @@ import { nanoid } from 'nanoid'
 const dialog = ref(false)
 const search = ref('')
 
-const props = defineProps<{
-  commands: Command[]
-}>()
+const props = withDefaults(defineProps<{
+  commands: Command[],
+  noResultText?: string
+}>(), {
+  noResultText: 'No results found.'
+})
 
 const commands = computed(() => props.commands.map((command) => {
   return {
@@ -102,7 +105,7 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
       <VDivider />
       <VList slim mandatory :selected="selected" tabindex="-1">
         <VListItem v-if="matches.length == 0 && search.length > 0">
-          Nothing found
+          {{ noResultText }}
         </VListItem>
         <template v-else v-for="(value, section) in sortedCommands" :key="section">
           <VListSubheader role="option">
