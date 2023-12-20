@@ -22,6 +22,8 @@ export default defineConfig(({ mode }) => {
           exports: 'named',
           globals: {
             vue: 'Vue',
+            vuetify: 'Vuetify',
+            'fuse.js': 'Fuse',
           },
         },
       },

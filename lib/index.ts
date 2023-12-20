@@ -1,7 +1,8 @@
 import VCommandPalette from './VCommandPalette.vue'
-import { createCommand } from './useSearch'
+import { type Command, createCommand } from './useSearch'
 
 export {
   VCommandPalette,
   createCommand,
+  Command,
 }

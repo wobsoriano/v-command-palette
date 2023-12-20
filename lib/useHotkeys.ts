@@ -11,7 +11,7 @@ export function useHotkeys(commands: Command[]) {
 
     watch(keys[command.shortcut.join('+')], (v) => {
       if (v)
-      command.perform()
+      command.command?.()
     })
   })
 }

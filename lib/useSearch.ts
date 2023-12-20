@@ -7,7 +7,7 @@ export interface Command {
   icon?: string
   shortcut?: string[]
   section: string
-  perform: () => void
+  command?: () => void
 }
 
 export function createCommand(action: Command) {

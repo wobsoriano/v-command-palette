@@ -6,7 +6,7 @@ const actions = [
     id: 'home',
     title: 'Home',
     icon: 'mdi-home',
-    perform() {
+    command() {
       console.log(123)
     },
     section: 'Basics',
@@ -16,7 +16,7 @@ const actions = [
     id: 'docs',
     title: 'Docs',
     icon: 'mdi-book',
-    perform() {
+    command() {
       console.log(123)
     },
     section: 'Basics',
@@ -26,7 +26,7 @@ const actions = [
     id: 'readme',
     title: 'ReadNe',
     icon: 'mdi-book',
-    perform() {
+    command() {
       console.log(456)
     },
     section: 'Others',
@@ -35,7 +35,7 @@ const actions = [
   createCommand({
     title: 'Hoe',
     icon: 'mdi-book',
-    perform() {
+    command() {
       console.log(456)
     },
     section: 'Others',
