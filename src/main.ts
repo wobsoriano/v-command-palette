@@ -5,7 +5,11 @@ import { createVuetify } from 'vuetify'
 import App from './App.vue'
 
 const app = createApp(App)
-const vuetify = createVuetify()
+const vuetify = createVuetify({
+  theme: {
+    defaultTheme: 'dark'
+  }
+})
 app.use(vuetify)
 
 app.mount('#app')

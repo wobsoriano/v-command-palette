@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { VCommandPalette, createCommand } from '@/.'
+import { useTheme } from 'vuetify';
+
+const theme = useTheme()
 
 const actions = [
   createCommand({
@@ -9,36 +12,43 @@ const actions = [
     command() {
       console.log(123)
     },
-    section: 'Basics',
+    section: 'Navigation',
     shortcut: ['a', 'b'],
   }),
   createCommand({
     id: 'docs',
     title: 'Docs',
-    icon: 'mdi-book',
     command() {
-      console.log(123)
+      window.open('https://github.com/wobsoriano/v-command-palette', '_blank')
     },
-    section: 'Basics',
-    shortcut: ['b', 'd'],
+    section: 'Navigation',
+    shortcut: ['g', 'd'],
   }),
   createCommand({
-    id: 'readme',
-    title: 'ReadNe',
-    icon: 'mdi-book',
+    id: 'x',
+    title: 'Twitter',
     command() {
-      console.log(456)
+      window.open('https://x.com/wobsoriano', '_blank')
     },
-    section: 'Others',
-    shortcut: ['h', 'i'],
+    section: 'Navigation',
+    shortcut: ['g', 't'],
   }),
   createCommand({
-    title: 'Hoe',
-    icon: 'mdi-book',
+    id: 'github',
+    title: 'GitHub',
     command() {
-      console.log(456)
+      window.open('https://github.com/wobsoriano/v-command-palette', '_blank')
     },
-    section: 'Others',
+    section: 'Navigation',
+    shortcut: ['g', 'h'],
+  }),
+  createCommand({
+    id: 'theme',
+    title: 'Change theme...',
+    command() {
+      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    },
+    section: 'Preferences',
   }),
 ]
 </script>
