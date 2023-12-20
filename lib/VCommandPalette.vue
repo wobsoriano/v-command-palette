@@ -19,6 +19,9 @@ import { useHotkeys } from './useHotkeys'
 const props = withDefaults(defineProps<{
   commands: Command[]
   noResultText?: string
+  textFieldProps?: Record<string, unknown>
+  cardProps?: Record<string, unknown>
+  dialogProps?: Record<string, unknown>
 }>(), {
   noResultText: 'No results found.',
 })
@@ -86,8 +89,8 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
 </script>
 
 <template>
-  <VDialog v-model="dialog" max-width="600px" content-class="v-command-palette">
-    <VCard max-height="450px">
+  <VDialog v-bind="dialogProps" v-model="dialog" max-width="600px" content-class="v-command-palette">
+    <VCard v-bind="cardProps" max-height="450px">
       <VListItem class="px-0">
         <VTextField
           ref="inputRef"
@@ -99,6 +102,7 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
           hide-details
           autofocus
           @keydown="moveToItem"
+          v-bind="textFieldProps"
         />
       </VListItem>
       <VDivider />
