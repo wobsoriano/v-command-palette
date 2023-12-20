@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
         formats: ['es'],
       },
       rollupOptions: {
-        external: ['vue', 'vuetify', /vuetify\/.+/, 'fuse.js'],
+        external: ['vue', 'vuetify', /vuetify\/.+/],
       },
       emptyOutDir: false,
     }
