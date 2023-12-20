@@ -1,6 +1,6 @@
 # v-command-paletter
 
-A command palette based on [Vuetify](https://next.vuetifyjs.com).
+A command palette for [Vuetify](https://next.vuetifyjs.com).
 
 Demo: https://vuetify-use-dialog.vercel.app
 
