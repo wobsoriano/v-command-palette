@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.2",
   "packageManager": "pnpm@8.12.1",
-  "description": "",
+  "description": "A command palette based on Vuetify.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/wobsoriano/v-command-palette#readme",
