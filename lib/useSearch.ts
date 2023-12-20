@@ -1,5 +1,5 @@
-import Fuse, { FuseResult } from 'fuse.js'
-import { ComputedRef, MaybeRef, computed, onMounted, ref, unref, watch } from 'vue'
+import Fuse from 'fuse.js'
+import { Ref, computed, onMounted, ref, watch } from 'vue'
 
 export interface Command {
   id?: string
@@ -14,17 +14,17 @@ export function createCommand(action: Command) {
   return action
 }
 
-export function useSearch(search: MaybeRef<string>, list: MaybeRef<Command[]>) {
-  const result = ref<Command[]>(unref(list))
+export function useSearch(search: Ref<string>, list: Command[]) {
+  const result = ref<Command[]>(list)
 
   onMounted(() => {
-    const fuse = new Fuse<Command>(unref(list), {
+    const fuse = new Fuse<Command>(list, {
       keys: ['title']
     })
 
-    watch(() => unref(search), (pattern) => {
+    watch(search, (pattern) => {
       if (!pattern) {
-        result.value = unref(list)
+        result.value = list
         return
       }
 
@@ -35,11 +35,11 @@ export function useSearch(search: MaybeRef<string>, list: MaybeRef<Command[]>) {
   return result
 }
 
-export function useSortedActions(commands: MaybeRef<Command[]>) {
+export function useSortedActions(commands: Ref<Command[]>) {
   return computed(() => {
     const sections: Record<string, Command[]> = {}
 
-    unref(commands).forEach((item) => {
+    commands.value.forEach((item) => {
       if (sections[item.section])
         sections[item.section].push(item)
       else

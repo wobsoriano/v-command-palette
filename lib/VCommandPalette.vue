@@ -12,7 +12,6 @@ import {
   VTextField,
 } from 'vuetify/components'
 import { useSortedActions, useSearch, type Command } from './useSearch'
-import { watchEffect } from 'vue';
 
 const dialog = ref(true)
 const search = ref('')
@@ -33,15 +32,15 @@ function moveToItem(e: KeyboardEvent) {
 
   if (e.key === 'ArrowDown') {
     if (activeIndex.value < numberOfItems - 1) {
-      activeIndex.value++;
       e.preventDefault();
+      activeIndex.value++;
     }
   }
 
   if (e.key === 'ArrowUp') {
     if (activeIndex.value > 0) {
-      activeIndex.value--;
       e.preventDefault();
+      activeIndex.value--;
     }
   }
 
