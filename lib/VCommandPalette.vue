@@ -63,7 +63,7 @@ function moveToItem(e: KeyboardEvent) {
 
   if (e.key === 'Enter' && activeIndex.value >= 0) {
     e.preventDefault();
-    matches.value[activeIndex.value].perform();
+    matches.value[activeIndex.value].command?.();
   }
 }
 
@@ -108,7 +108,7 @@ const inputRef = ref()
           <VListSubheader role="option">
             {{ section }}
           </VListSubheader>
-          <VListItem :ripple="false" :value="item.id" v-for="item in value" :key="item.id" role="option" :title="item.title" @click="() => { item.perform(); inputRef?.focus(); }">
+          <VListItem :ripple="false" :value="item.id" v-for="item in value" :key="item.id" role="option" :title="item.title" @click="() => { inputRef?.focus(); item.command?.(); }">
             <template v-if="item.icon" #prepend>
               <VIcon>
                 {{ item.icon }}

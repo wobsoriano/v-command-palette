@@ -14,18 +14,11 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: path.resolve(__dirname, 'lib/index.ts'),
         name: 'v-command-palette',
-        fileName: 'v-command-palette',
+        fileName: 'index',
+        formats: ['es'],
       },
       rollupOptions: {
         external: ['vue', 'vuetify', /vuetify\/.+/, 'fuse.js'],
-        output: {
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-            vuetify: 'Vuetify',
-            'fuse.js': 'Fuse',
-          },
-        },
       },
       emptyOutDir: false,
     }

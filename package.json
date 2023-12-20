@@ -15,24 +15,23 @@
   "keywords": [
     "vuetify",
     "vue",
-    "confirm",
-    "snackbar",
-    "toast"
+    "command",
+    "palette"
   ],
   "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/v-command-palette.js",
-      "require": "./dist/v-command-palette.umd.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./style.css": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
   },
-  "main": "./dist/v-command-palette.umd.cjs",
-  "module": "./dist/v-command-palette.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
