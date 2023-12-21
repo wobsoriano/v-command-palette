@@ -147,6 +147,7 @@ function closeDialog() {
             role="option"
             :title="item.title"
             :subtitle="item.subtitle"
+            :lines="item.subtitle ? 'two' : 'one'"
             @click="handleClick(item)"
           >
             <template v-if="item.icon" #prepend>
