@@ -2,7 +2,7 @@
 
 A command palette for [Vuetify](https://next.vuetifyjs.com).
 
-Demo: https://vuetify-use-dialog.vercel.app
+https://github.com/wobsoriano/v-command-palette/assets/13049130/cdb5e8c6-c373-4a2d-ad49-f5d1420d690c
 
 ## Installation
 
