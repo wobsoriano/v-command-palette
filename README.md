@@ -17,6 +17,7 @@ Import the component at the root of your app
 ```vue
 <script setup>
 import { VCommandPalette, createCommand } from 'v-command-palette'
+import 'v-command-palette/dist/style.css'
 
 const commands = [
   createCommand({
@@ -47,24 +48,9 @@ const commands = [
 
 ## Props
 
-Global options:
-
-```ts
-app.use(VuetifyUseDialog, {
-  confirmDialog: {
-    // useConfirm options
-    title: 'Are you sure?'
-  },
-  snackbar: {
-    // useSnackbar options
-    snackbarProps: {
-      timeout: 2000,
-    }
-  }
-})
-```
-
-Looking for a stackable toast component? Check out [Vuetify Sonner](https://vuetify-sonner.vercel.app).
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| commands | `Command[]` | `[]` | The list of commands to display |
 
 ## License
 
