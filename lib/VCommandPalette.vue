@@ -44,7 +44,7 @@ watch([keys['Cmd+K'], keys['Ctrl+K']], ([cmd, ctrl]) => {
 })
 
 useHotkeys(props.commands, {
-  onCommand() {
+  onCommandTriggered() {
     closeDialog()
   },
 })
