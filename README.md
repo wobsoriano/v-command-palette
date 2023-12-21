@@ -1,4 +1,4 @@
-# v-command-paletter
+# v-command-palette
 
 A command palette for [Vuetify](https://next.vuetifyjs.com).
 
