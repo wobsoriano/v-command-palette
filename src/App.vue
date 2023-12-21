@@ -8,6 +8,7 @@ const commands = [
   createCommand({
     id: 'home',
     title: 'Home',
+    subtitle: 'Subtitles can make your commands more descriptive.',
     icon: 'mdi-home',
     command() {
       console.log(123)

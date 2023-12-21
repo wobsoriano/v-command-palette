@@ -81,13 +81,6 @@ watch(search, () => {
   activeIndex.value = 0
 })
 
-watch(dialog, (value) => {
-  if (!value) {
-    activeIndex.value = 0
-    search.value = ''
-  }
-})
-
 const selected = computed(() => [activeId.value])
 
 const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
@@ -104,23 +97,30 @@ function closeDialog() {
 </script>
 
 <template>
-  <VDialog v-bind="dialogProps" v-model="dialog" max-width="600px" content-class="v-command-palette">
+  <VDialog
+    v-bind="dialogProps"
+    v-model="dialog"
+    content-class="overflow-visible align-self-start mt-16"
+    max-height="900"
+    width="100%"
+    max-width="600px"
+    @after-leave="activeIndex = 0; search = ''"
+  >
     <VCard v-bind="cardProps" max-height="450px">
-      <VListItem class="px-0">
-        <VTextField
-          ref="inputRef"
-          v-model="search"
-          role="combobox"
-          placeholder="Type a command or search..."
-          variant="solo"
-          single-line
-          hide-details
-          autofocus
-          v-bind="textFieldProps"
-          @keydown="moveToItem"
-        />
-      </VListItem>
-      <VDivider />
+      <VTextField
+        ref="inputRef"
+        v-model="search"
+        role="combobox"
+        placeholder="Type a command or search..."
+        single-line
+        hide-details
+        autofocus
+        class="flex-grow-0"
+        variant="filled"
+        v-bind="textFieldProps"
+        @keydown="moveToItem"
+      />
+      <!-- <VDivider /> -->
       <VList slim mandatory :selected="selected" tabindex="-1">
         <VListItem v-if="matches.length === 0 && search.length > 0">
           {{ noResultText }}
@@ -140,6 +140,7 @@ function closeDialog() {
             :value="item.id"
             role="option"
             :title="item.title"
+            :subtitle="item.subtitle"
             @click="handleClick(item)"
           >
             <template v-if="item.icon" #prepend>

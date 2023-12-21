@@ -5,6 +5,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 export interface Command {
   id?: string
   title: string
+  subtitle?: string
   icon?: string
   shortcut?: string[]
   section?: string
