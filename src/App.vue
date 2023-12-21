@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useTheme } from 'vuetify'
 import { VCommandPalette, createCommand } from '@/.'
-import { useTheme } from 'vuetify';
 
 const theme = useTheme()
 

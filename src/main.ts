@@ -7,8 +7,8 @@ import App from './App.vue'
 const app = createApp(App)
 const vuetify = createVuetify({
   theme: {
-    defaultTheme: 'dark'
-  }
+    defaultTheme: 'dark',
+  },
 })
 app.use(vuetify)
 

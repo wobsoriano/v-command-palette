@@ -2,7 +2,7 @@ import { useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
 import type { Command } from './useSearch'
 
-export function useHotkeys(commands: Command[]) {
+export function useHotkeys(commands: Command[], options?: { onCommand?: () => void }) {
   const keys = useMagicKeys()
 
   commands.forEach((command) => {
@@ -10,8 +10,10 @@ export function useHotkeys(commands: Command[]) {
       return
 
     watch(keys[command.shortcut.join('+')], (v) => {
-      if (v)
+      if (v) {
         command.command?.()
+        options?.onCommand?.()
+      }
     })
   })
 }

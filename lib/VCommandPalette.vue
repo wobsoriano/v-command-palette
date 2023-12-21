@@ -43,7 +43,11 @@ watch([keys['Cmd+K'], keys['Ctrl+K']], ([cmd, ctrl]) => {
     dialog.value = !dialog.value
 })
 
-useHotkeys(props.commands)
+useHotkeys(props.commands, {
+  onCommand() {
+    closeDialog()
+  },
+})
 
 const activeIndex = ref(0)
 
@@ -69,6 +73,7 @@ function moveToItem(e: KeyboardEvent) {
   if (e.key === 'Enter' && activeIndex.value >= 0) {
     e.preventDefault()
     matches.value[activeIndex.value].command?.()
+    closeDialog()
   }
 }
 
@@ -86,6 +91,16 @@ watch(dialog, (value) => {
 const selected = computed(() => [activeId.value])
 
 const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
+
+function handleClick(command: Command) {
+  inputRef.value?.focus()
+  command.command?.()
+  closeDialog()
+}
+
+function closeDialog() {
+  dialog.value = false
+}
 </script>
 
 <template>
@@ -101,8 +116,8 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
           single-line
           hide-details
           autofocus
-          @keydown="moveToItem"
           v-bind="textFieldProps"
+          @keydown="moveToItem"
         />
       </VListItem>
       <VDivider />
@@ -114,7 +129,7 @@ const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
           <VListSubheader role="option">
             {{ section }}
           </VListSubheader>
-          <VListItem v-for="item in value" :key="item.id" :ripple="false" :value="item.id" role="option" :title="item.title" @click="() => { inputRef?.focus(); item.command?.(); }">
+          <VListItem v-for="item in value" :key="item.id" :ripple="false" :value="item.id" role="option" :title="item.title" @click="handleClick(item)">
             <template v-if="item.icon" #prepend>
               <VIcon>
                 {{ item.icon }}
