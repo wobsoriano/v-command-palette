@@ -168,10 +168,3 @@ function closeDialog() {
     </VCard>
   </VDialog>
 </template>
-
-<style scoped>
-:deep(.v-command-palette) {
-  position: absolute;
-  top: 20%;
-}
-</style>

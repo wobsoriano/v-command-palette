@@ -17,7 +17,6 @@ Import the component at the root of your app
 ```vue
 <script setup>
 import { VCommandPalette, createCommand } from 'v-command-palette'
-import 'v-command-palette/dist/style.css'
 
 const commands = [
   createCommand({
