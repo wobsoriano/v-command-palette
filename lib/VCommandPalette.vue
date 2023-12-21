@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { useMagicKeys } from '@vueuse/core'
 import {
+  VBtn,
   VCard,
   VCode,
   VDialog,
@@ -106,7 +107,7 @@ function closeDialog() {
     max-width="600px"
     @after-leave="activeIndex = 0; search = ''"
   >
-    <VCard v-bind="cardProps" max-height="450px">
+    <VCard v-bind="cardProps">
       <VTextField
         ref="inputRef"
         v-model="search"
@@ -119,8 +120,13 @@ function closeDialog() {
         variant="filled"
         v-bind="textFieldProps"
         @keydown="moveToItem"
-      />
-      <!-- <VDivider /> -->
+      >
+        <template #append-inner>
+          <VBtn border variant="outlined" size="small">
+            <span class="text-caption text-disabled">Esc</span>
+          </VBtn>
+        </template>
+      </VTextField>
       <VList slim mandatory :selected="selected" tabindex="-1">
         <VListItem v-if="matches.length === 0 && search.length > 0">
           {{ noResultText }}
