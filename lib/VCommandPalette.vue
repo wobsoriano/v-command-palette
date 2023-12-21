@@ -58,21 +58,18 @@ function moveToItem(e: KeyboardEvent) {
   const numberOfItems = matches.value.length
 
   if (e.key === 'ArrowDown') {
-    if (activeIndex.value < numberOfItems - 1) {
-      e.preventDefault()
+    e.preventDefault()
+    if (activeIndex.value < numberOfItems - 1)
       activeIndex.value++
-    }
   }
 
   if (e.key === 'ArrowUp') {
-    if (activeIndex.value > 0) {
-      e.preventDefault()
+    e.preventDefault()
+    if (activeIndex.value > 0)
       activeIndex.value--
-    }
   }
 
   if (e.key === 'Enter' && activeIndex.value >= 0) {
-    e.preventDefault()
     matches.value[activeIndex.value].command?.()
     closeDialog()
   }
