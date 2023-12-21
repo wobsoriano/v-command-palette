@@ -125,18 +125,35 @@ function closeDialog() {
         <VListItem v-if="matches.length === 0 && search.length > 0">
           {{ noResultText }}
         </VListItem>
-        <template v-for="(value, section) in sortedCommands" v-else :key="section">
+        <template
+          v-for="(value, section) in sortedCommands"
+          v-else
+          :key="section"
+        >
           <VListSubheader role="option">
             {{ section }}
           </VListSubheader>
-          <VListItem v-for="item in value" :key="item.id" :ripple="false" :value="item.id" role="option" :title="item.title" @click="handleClick(item)">
+          <VListItem
+            v-for="item in value"
+            :key="item.id"
+            :ripple="false"
+            :value="item.id"
+            role="option"
+            :title="item.title"
+            @click="handleClick(item)"
+          >
             <template v-if="item.icon" #prepend>
               <VIcon>
                 {{ item.icon }}
               </VIcon>
             </template>
             <template v-if="item.shortcut" #append>
-              <VCode v-for="s in item.shortcut" :key="s" tag="kbd" class="mx-1">
+              <VCode
+                v-for="s in item.shortcut"
+                :key="s"
+                tag="kbd"
+                class="mx-1"
+              >
                 {{ s }}
               </VCode>
             </template>
