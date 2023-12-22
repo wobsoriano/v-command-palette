@@ -49,7 +49,7 @@ const commands = [
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| commands | `array` | `[]` | The list of commands to display |
+| commands | `array` | `[]` | The list of commands to display. See the [`Command`](https://github.com/wobsoriano/v-command-palette/blob/e1ed365d227caeb6c1fa6222ebbb98f80cc8fff8/lib/useSearch.ts#L6) interface. |
 | textFieldProps | `object` | `{}` | [VTextField props](https://vuetifyjs.com/en/api/v-text-field/#props) |
 | dialogProps | `object` | `{}` | [VDIalog props](https://vuetifyjs.com/en/api/v-dialog/#props) |
 | cardProps | `object` | `{}` | [VCard props](https://vuetifyjs.com/en/api/v-card/#props) |
