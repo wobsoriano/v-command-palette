@@ -121,7 +121,7 @@ function closeDialog() {
         @input="activeIndex = 0"
       >
         <template #append-inner>
-          <VBtn border variant="outlined" size="small">
+          <VBtn border variant="text" size="small">
             <span class="text-caption text-disabled">Esc</span>
           </VBtn>
         </template>
