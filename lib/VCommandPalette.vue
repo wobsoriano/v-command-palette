@@ -13,6 +13,7 @@ import {
   VTextField,
 } from 'vuetify/components'
 import { nanoid } from 'nanoid'
+import type { IFuseOptions } from 'fuse.js'
 import { type Command, useSearch, useSortedActions } from './useSearch'
 import { useHotkeys } from './useHotkeys'
 import type { ExtractProps } from './types'
@@ -23,6 +24,7 @@ interface Props {
   textFieldProps?: ExtractProps<typeof VTextField>
   cardProps?: ExtractProps<typeof VCard>
   dialogProps?: ExtractProps<typeof VDialog>
+  fuseOptions?: IFuseOptions<Command>
 }
 
 defineOptions({
@@ -40,7 +42,7 @@ const commands = computed(() => props.commands.map((command) => {
     id: command.id || nanoid(5),
   }
 }))
-const matches = useSearch(search, commands)
+const matches = useSearch(search, commands, { fuseOptions: props.fuseOptions })
 const sortedCommands = useSortedActions(matches)
 
 const keys = useMagicKeys()

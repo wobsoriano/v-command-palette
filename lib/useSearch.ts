@@ -1,3 +1,4 @@
+import type { IFuseOptions } from 'fuse.js'
 import Fuse from 'fuse.js'
 import type { ComputedRef, Ref } from 'vue'
 import { computed, onMounted, ref, watch } from 'vue'
@@ -17,12 +18,17 @@ export function createCommand(action: Command) {
   return action
 }
 
-export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>) {
+interface Options<T> {
+  fuseOptions?: IFuseOptions<T>
+}
+
+export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>, options?: Options<Command>) {
   const result = ref<Command[]>(list.value)
 
   onMounted(() => {
     const fuse = new Fuse<Command>(list.value, {
       keys: ['title'],
+      ...options?.fuseOptions,
     })
 
     watch(search, (pattern) => {
