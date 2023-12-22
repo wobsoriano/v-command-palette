@@ -97,12 +97,12 @@ function closeDialog() {
 
 <template>
   <VDialog
-    v-bind="dialogProps"
     v-model="dialog"
     content-class="overflow-visible align-self-start mt-16"
     max-height="900"
     max-width="600"
     width="100%"
+    v-bind="dialogProps"
     @after-leave="activeIndex = 0; search = ''"
   >
     <VCard v-bind="cardProps">
@@ -140,7 +140,6 @@ function closeDialog() {
           </VListSubheader>
           <VListItem
             v-for="item in value"
-            v-bind="item.listItemProps"
             :key="item.id"
             :ripple="false"
             :value="item.id"
@@ -148,6 +147,7 @@ function closeDialog() {
             :title="item.title"
             :subtitle="item.subtitle"
             :lines="item.subtitle ? 'two' : 'one'"
+            v-bind="item.listItemProps"
             @click="handleClick(item)"
           >
             <template v-if="item.icon" #prepend>
