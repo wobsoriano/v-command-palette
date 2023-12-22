@@ -55,6 +55,10 @@ const commands = [
 | cardProps | `object` | `{}` | [VCard props](https://vuetifyjs.com/en/api/v-card/#props) |
 | fuseOptions | `object` | `{}` | [Fuse.js options](https://www.fusejs.io/api/options.html) |
 
+## Composables
+
+- `useCommandPalette` - Programmaticaly open or close the dialog.
+
 ## License
 
 MIT

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, provide, ref, watch } from 'vue'
 import { useMagicKeys } from '@vueuse/core'
 import {
   VBtn,
@@ -92,12 +92,27 @@ function handleClick(command: Command) {
   closeDialog()
 }
 
+function openDialog() {
+  dialog.value = true
+}
+
 function closeDialog() {
   dialog.value = false
 }
+
+defineExpose({
+  open: openDialog,
+  close: closeDialog,
+})
+
+provide('VCommandPalette', {
+  open: openDialog,
+  close: closeDialog,
+})
 </script>
 
 <template>
+  <slot />
   <VDialog
     v-model="dialog"
     content-class="overflow-visible align-self-start mt-16"
