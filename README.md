@@ -53,6 +53,7 @@ const commands = [
 | textFieldProps | `object` | `{}` | [VTextField props](https://vuetifyjs.com/en/api/v-text-field/#props) |
 | dialogProps | `object` | `{}` | [VDIalog props](https://vuetifyjs.com/en/api/v-dialog/#props) |
 | cardProps | `object` | `{}` | [VCard props](https://vuetifyjs.com/en/api/v-card/#props) |
+| cardProps | `object` | `{}` | [VCardText props](https://vuetifyjs.com/en/api/v-card-text/#props) |
 | fuseOptions | `object` | `{}` | [Fuse.js options](https://www.fusejs.io/api/options.html) |
 
 ## Composables

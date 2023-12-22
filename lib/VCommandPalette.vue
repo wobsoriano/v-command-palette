@@ -4,6 +4,7 @@ import { useMagicKeys } from '@vueuse/core'
 import {
   VBtn,
   VCard,
+  VCardText,
   VCode,
   VDialog,
   VIcon,
@@ -23,6 +24,7 @@ interface Props {
   noResultText?: string
   textFieldProps?: ExtractProps<typeof VTextField>
   cardProps?: ExtractProps<typeof VCard>
+  cardTextProps?: ExtractProps<typeof VCardText>
   dialogProps?: ExtractProps<typeof VDialog>
   fuseOptions?: IFuseOptions<Command>
 }
@@ -143,48 +145,50 @@ provide('VCommandPalette', {
           </VBtn>
         </template>
       </VTextField>
-      <VList slim mandatory :selected="selected" tabindex="-1">
-        <VListItem v-if="matches.length === 0 && search.length > 0">
-          {{ noResultText }}
-        </VListItem>
-        <template
-          v-for="(value, section) in sortedCommands"
-          v-else
-          :key="section"
-        >
-          <VListSubheader role="option">
-            {{ section }}
-          </VListSubheader>
-          <VListItem
-            v-for="item in value"
-            :key="item.id"
-            :ripple="false"
-            :value="item.id"
-            role="option"
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :lines="item.subtitle ? 'two' : 'one'"
-            v-bind="item.listItemProps"
-            @click="handleClick(item)"
-          >
-            <template v-if="item.icon" #prepend>
-              <VIcon>
-                {{ item.icon }}
-              </VIcon>
-            </template>
-            <template v-if="item.shortcut" #append>
-              <VCode
-                v-for="s in item.shortcut"
-                :key="s"
-                tag="kbd"
-                class="mx-1"
-              >
-                {{ s }}
-              </VCode>
-            </template>
+      <VCardText class="pa-0" v-bind="cardTextProps">
+        <VList slim mandatory :selected="selected" tabindex="-1">
+          <VListItem v-if="matches.length === 0 && search.length > 0">
+            {{ noResultText }}
           </VListItem>
-        </template>
-      </VList>
+          <template
+            v-for="(value, section) in sortedCommands"
+            v-else
+            :key="section"
+          >
+            <VListSubheader role="option">
+              {{ section }}
+            </VListSubheader>
+            <VListItem
+              v-for="item in value"
+              :key="item.id"
+              :ripple="false"
+              :value="item.id"
+              role="option"
+              :title="item.title"
+              :subtitle="item.subtitle"
+              :lines="item.subtitle ? 'two' : 'one'"
+              v-bind="item.listItemProps"
+              @click="handleClick(item)"
+            >
+              <template v-if="item.icon" #prepend>
+                <VIcon>
+                  {{ item.icon }}
+                </VIcon>
+              </template>
+              <template v-if="item.shortcut" #append>
+                <VCode
+                  v-for="s in item.shortcut"
+                  :key="s"
+                  tag="kbd"
+                  class="mx-1"
+                >
+                  {{ s }}
+                </VCode>
+              </template>
+            </VListItem>
+          </template>
+        </VList>
+      </VCardText>
     </VCard>
   </VDialog>
 </template>
