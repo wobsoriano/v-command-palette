@@ -80,10 +80,6 @@ function moveToItem(e: KeyboardEvent) {
   }
 }
 
-watch(search, () => {
-  activeIndex.value = 0
-})
-
 const selected = computed(() => [activeId.value])
 
 const inputRef = ref<InstanceType<typeof VTextField> | null>(null)
@@ -105,8 +101,8 @@ function closeDialog() {
     v-model="dialog"
     content-class="overflow-visible align-self-start mt-16"
     max-height="900"
+    max-width="600"
     width="100%"
-    max-width="600px"
     @after-leave="activeIndex = 0; search = ''"
   >
     <VCard v-bind="cardProps">
@@ -122,6 +118,7 @@ function closeDialog() {
         variant="filled"
         v-bind="textFieldProps"
         @keydown="moveToItem"
+        @input="activeIndex = 0"
       >
         <template #append-inner>
           <VBtn border variant="outlined" size="small">
