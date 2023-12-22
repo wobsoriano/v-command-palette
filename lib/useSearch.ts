@@ -10,6 +10,7 @@ export interface Command {
   shortcut?: string[]
   section?: string
   command?: () => void
+  listItemProps?: Record<string, unknown>
 }
 
 export function createCommand(action: Command) {

@@ -6,7 +6,6 @@ import {
   VCard,
   VCode,
   VDialog,
-  VDivider,
   VIcon,
   VList,
   VListItem,
@@ -16,14 +15,20 @@ import {
 import { nanoid } from 'nanoid'
 import { type Command, useSearch, useSortedActions } from './useSearch'
 import { useHotkeys } from './useHotkeys'
+import type { ExtractProps } from './types'
 
-const props = withDefaults(defineProps<{
+interface Props {
   commands: Command[]
   noResultText?: string
-  textFieldProps?: Record<string, unknown>
-  cardProps?: Record<string, unknown>
-  dialogProps?: Record<string, unknown>
-}>(), {
+  textFieldProps?: ExtractProps<typeof VTextField>
+  cardProps?: ExtractProps<typeof VCard>
+  dialogProps?: ExtractProps<typeof VDialog>
+}
+
+defineOptions({
+  inheritAttrs: false,
+})
+const props = withDefaults(defineProps<Props>(), {
   noResultText: 'No results found.',
 })
 const dialog = ref(false)
@@ -138,6 +143,7 @@ function closeDialog() {
           </VListSubheader>
           <VListItem
             v-for="item in value"
+            v-bind="item.listItemProps"
             :key="item.id"
             :ripple="false"
             :value="item.id"
