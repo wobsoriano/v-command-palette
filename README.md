@@ -49,7 +49,10 @@ const commands = [
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| commands | `Command[]` | `[]` | The list of commands to display |
+| commands | `array` | `[]` | The list of commands to display |
+| textFieldProps | `object` | `{}` | [VTextField props](https://vuetifyjs.com/en/api/v-text-field/#props) |
+| dialogProps | `object` | `{}` | [VDIalog props](https://vuetifyjs.com/en/api/v-dialog/#props) |
+| cardProps | `object` | `{}` | [VCard props](https://vuetifyjs.com/en/api/v-card/#props) |
 
 ## License
 
