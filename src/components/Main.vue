@@ -1,8 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import Logo from '../assets/logo.svg'
 import { useCommandPalette } from '@/.'
 
 const { open } = useCommandPalette()
+
+function getShortcut() {
+  const isMacLike = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+
+  if (isMacLike)
+    return '⌘+K'
+
+  return 'Ctrl+K'
+}
 </script>
 
 <template>
@@ -28,7 +38,7 @@ const { open } = useCommandPalette()
             variant="flat"
             @click="open"
           >
-            Try it out
+            Try it out (<kbd>{{ getShortcut() }}</kbd>)
           </v-btn>
         </v-col>
 
