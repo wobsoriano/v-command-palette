@@ -38,7 +38,7 @@ export function useSearch(search: Ref<string>, list: ComputedRef<Command[]>, opt
       }
 
       result.value = fuse.search(pattern).map(i => i.item)
-    }, { immediate: false })
+    }, { immediate: true })
   })
 
   return result

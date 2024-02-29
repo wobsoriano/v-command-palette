@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
+import { ref } from 'vue'
 import { VCommandPalette, createCommand } from '@/.'
 
 const theme = useTheme()
@@ -11,6 +12,7 @@ const commands = [
     subtitle: 'Subtitles can make your commands more descriptive.',
     icon: 'mdi-home',
     command() {
+      // eslint-disable-next-line no-console
       console.log(123)
     },
     section: 'Navigation',

@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   noResultText: 'No results found.',
 })
 const dialog = ref(false)
-const search = ref('')
+const search = defineModel({ default: '' })
 
 const commands = computed(() => props.commands.map((command) => {
   return {
