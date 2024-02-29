@@ -55,7 +55,7 @@
   "dependencies": {
     "@vueuse/core": "^10.9.0",
     "fuse.js": "^7.0.0",
-    "nanoid": "^5.0.4"
+    "nanoid": "^5.0.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.4.6",
