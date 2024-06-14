@@ -1,7 +1,7 @@
 {
   "name": "v-command-palette",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "packageManager": "pnpm@9.3.0",
   "description": "A command palette for Vuetify.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
