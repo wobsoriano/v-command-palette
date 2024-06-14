@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import Logo from '../assets/logo.svg'
 import { useCommandPalette } from '@/.'
 

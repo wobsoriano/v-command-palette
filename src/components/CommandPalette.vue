@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
-import { ref } from 'vue'
 import { VCommandPalette, createCommand } from '@/.'
 
 const theme = useTheme()
