@@ -2,7 +2,7 @@
   "name": "v-command-palette",
   "type": "module",
   "version": "0.0.17",
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@9.3.0",
   "description": "A command palette for Vuetify.",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "license": "MIT",
@@ -58,20 +58,20 @@
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.4",
+    "@antfu/eslint-config": "^2.21.1",
     "@mdi/font": "^7.4.47",
-    "@types/node": "^20.11.24",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "bumpp": "^9.3.0",
-    "eslint": "^8.57.0",
-    "rimraf": "^5.0.5",
+    "@types/node": "^20.14.2",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "bumpp": "^9.4.1",
+    "eslint": "^9.4.0",
+    "rimraf": "^5.0.7",
     "roboto-fontface": "^0.10.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "vite-plugin-dts": "^3.7.3",
-    "vite-plugin-vuetify": "^2.0.2",
-    "vue": "^3.4.21",
-    "vue-tsc": "^1.8.27",
-    "vuetify": "^3.5.6"
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vue": "^3.4.28",
+    "vue-tsc": "^2.0.21",
+    "vuetify": "^3.6.9"
   }
 }
